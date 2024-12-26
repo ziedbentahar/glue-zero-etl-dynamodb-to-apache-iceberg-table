@@ -11,9 +11,6 @@ build:
 
 deploy: terraform-init terraform-plan terraform-apply
 
-deploy-glue-zero-etl:
-	@./infra/create-zero-etl-integration.sh
-
 destroy: terraform-destroy
 
 terraform-init:
@@ -27,6 +24,3 @@ terraform-apply:
 
 terraform-destroy:
 	@terraform -chdir=./infra destroy -auto-approve
-
-destroy-glue-zero-etl:
-	@./infra/delete-zero-etl-integration.sh
