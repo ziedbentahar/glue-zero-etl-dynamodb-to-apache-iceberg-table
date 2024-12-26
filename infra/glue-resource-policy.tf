@@ -18,12 +18,6 @@ data "aws_iam_policy_document" "glue_resource_policy" {
       "arn:aws:glue:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:catalog",
       "arn:aws:glue:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:database/${aws_glue_catalog_database.this.name}",
     ]
-
-    # condition {
-    #   test     = "StringLike"
-    #   variable = "aws:SourceArn"
-    #   values   = [data.aws_dynamodb_table.this.arn]
-    # }
   }
 
   statement {
@@ -41,12 +35,6 @@ data "aws_iam_policy_document" "glue_resource_policy" {
       "arn:aws:glue:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:catalog",
       "arn:aws:glue:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:database/${aws_glue_catalog_database.this.name}",
     ]
-
-    # condition {
-    #   test     = "StringEquals"
-    #   variable = "aws:SourceArn"
-    #   values   = [data.aws_dynamodb_table.this.arn]
-    # }
   }
 
   depends_on = [
