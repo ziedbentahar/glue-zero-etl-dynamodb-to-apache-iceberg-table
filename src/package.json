@@ -1,0 +1,15 @@
+{
+  "name": "ddb-to-lakehouse",
+  "type": "module",
+  "scripts": {
+    "bundle": "esbuild ./lambda/manage-zero-etl-integration.js --platform=node  --bundle --outfile=dist/manage-zero-etl-integration.js"
+  },
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.716.0",
+    "@aws-sdk/client-glue": "^3.716.0",
+    "@aws-sdk/client-ssm": "^3.716.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.24.1"
+  }
+}
