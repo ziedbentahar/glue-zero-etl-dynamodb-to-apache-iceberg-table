@@ -12,17 +12,19 @@ export const handler = async (event) => {
     }
 
     if (event.tf.action === "create") {
-        const integrationResult = await glueClient.send(new CreateIntegrationCommand({
-            IntegrationName : event.integrationName,
-            SourceArn : event.sourceArn,
-            TargetArn : event.targetArn,
-    
-        }));
+
         const integrationResourcePropertyResult =  await glueClient.send(new CreateIntegrationResourcePropertyCommand({
             ResourceArn: event.targetArn,
             TargetProcessingProperties: {
                 RoleArn: event.roleArn
             }
+        }));
+        
+        const integrationResult = await glueClient.send(new CreateIntegrationCommand({
+            IntegrationName : event.integrationName,
+            SourceArn : event.sourceArn,
+            TargetArn : event.targetArn,
+    
         }));
 
         await glueClient.send(new CreateIntegrationTablePropertiesCommand({
